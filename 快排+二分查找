@@ -1,5 +1,4 @@
 #include<iostream>
-#include<deque>
 using namespace std;
 int Binary_Serch(int a[],int low,int high ,int n){
 
