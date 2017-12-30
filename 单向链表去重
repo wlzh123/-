@@ -6,8 +6,8 @@ struct ListNode{
   int val;
   struct ListNode *next;
 };
-ListNode* Erase_Node(ListNode* pHead){
-   if(pHead==NULL) return NULL;
+void Erase_Node(ListNode* pHead){
+   if(pHead==NULL) return ;
            ListNode* p1=pHead;
            ListNode* p2=p1->next;
        while(p2!=NULL){
@@ -21,7 +21,7 @@ ListNode* Erase_Node(ListNode* pHead){
           }
 
        }
-        return pHead->next;
+       // return pHead->next;
 }
 
 int main(){
