@@ -2,9 +2,6 @@
 /////////例：1-2-2-3-3-3-4-5-5-5-5-5-5  转换为1-2-3-4-5
 #include<iostream>
 using namespace std;
-////创建链表结点
-#include<iostream>
-using namespace std;
 struct ListNode{
   int val;
   struct ListNode *next;
@@ -13,36 +10,39 @@ ListNode* Erase_Node(ListNode* pHead){
    if(pHead==NULL) return NULL;
            ListNode* p1=pHead;
            ListNode* p2=p1->next;
-       while(p2!=NULL&& p2->next != NULL){
-          if(p1->val==p2->val)
+       while(p2!=NULL){
+          if(p1->val==p2->val){
+              p1->next=p2->next;
               p2=p2->next;
-          else{
-           p1->next=p2;
-             p1=p2;
           }
-          p2=p2->next;
+          else{
+              p1=p2;
+              p2= p2->next;
+          }
+
        }
-        return pHead;
-    }
+        return pHead->next;
+}
+
 int main(){
-    int n;
+
     ListNode* head=new ListNode;
     ListNode* ss=head;
-    while(cin>>n){
-        for(int i=0;i<n;++i){
-           int te;
-           cin>>te;
-           ListNode* temp=new ListNode;
-           temp->val=te;
-           ss->next=temp;
-           ss=ss->next;
-        }
+    ListNode* Head=head;
+    for(int i=0;i<10;++i){
+        ListNode* temp=new ListNode;
+        temp->val=2;
+        ss->next=temp;
+        ss=temp;
+        temp->next=NULL;
     }
-   ListNode* res= Erase_Node(head);
-   res=res->next;
-   while(res){
-      cout<<res->val;
-      res=res->next;
+
+  Erase_Node(Head);
+  Head=Head->next;
+
+   while(Head!=NULL){
+      cout<<Head->val;
+      Head=Head->next;
    }
 
 }
