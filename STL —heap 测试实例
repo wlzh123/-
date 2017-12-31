@@ -1,0 +1,51 @@
+#include<vector>
+#include<iostream>
+#include<algorithm>
+using namespace std;
+int main(){
+    int ss[9]={0,1,2,4,5,7,9,8};
+    vector<int> ivec(ss,ss+9);
+    make_heap(ivec.begin(),ivec.end());
+    for(int i=0;i<ivec.size();++i){
+        cout<<ivec[i]<<' ';//9 8 7 4 5 0 2 1 0
+    }
+    cout<<endl;
+
+
+    ivec.push_back(3);
+    push_heap(ivec.begin(),ivec.end());
+    for(int i=0;i<ivec.size();++i){
+        cout<<ivec[i]<<' ';//9 8 7 4 5 0 2 1 0 3
+    }
+    cout<<endl;
+
+
+    pop_heap(ivec.begin(),ivec.end());// 9 be removed end
+    cout<<ivec.back()<<endl;////显示9 but no remove
+    cout<<ivec.front()<<endl;////显示8
+    ivec.pop_back();//remove last elem and no return
+
+
+    for(int i=0;i<ivec.size();++i){
+        cout<<ivec[i]<<' ';
+    }
+    cout<<endl;               //8 5 7 4 3 0 2 1 0
+
+
+    //堆排序
+     sort_heap(ss,ss+9);//直接对原数组排序  结果不对
+
+     for(int i=0;i<9;++i){
+        cout<<ss[i]<<' ';//0 1 4 5 7 8 9 2 0
+    }
+    cout<<endl;
+
+
+    make_heap(ss,ss+9);//先创建堆 然后排序 才是对的
+    sort_heap(ss,ss+9);
+
+     for(int i=0;i<9;++i){
+        cout<<ss[i]<<' ';//0 0 1 2 4 5 7 8 9
+    }
+    cout<<endl;
+}
