@@ -1,0 +1,39 @@
+#include<iostream>
+#include<set>
+#include<algorithm>
+using namespace std;
+
+int main(){
+////C++ set容器简单用法 set是关联容器,类似于集合,里面的元素不会重复,而且呈现为有序性
+    int i;
+    int ss[5]={0,1,2,3,4};
+    set<int>iset(ss,ss+5);
+
+    cout<<"size=="<<iset.size()<<endl;
+    cout<<"3 count "<<iset.count(3)<<endl;
+
+    iset.insert(3);
+    cout<<"size=="<<iset.size()<<endl;
+    cout<<"3 count "<<iset.count(3)<<endl;
+
+    iset.insert(5);
+    cout<<"size=="<<iset.size()<<endl;
+    cout<<"3 count "<<iset.count(3)<<endl;
+
+    iset.erase(3);
+    cout<<"size=="<<iset.size()<<endl;
+    cout<<"3 count "<<iset.count(3)<<endl;
+
+    set<int>::iterator  iter1=iset.begin();
+    set<int>::iterator  iter2=iset.end();
+    for(;iter1!=iter2;++iter1)
+        cout<<*iter1<<' ';// /0 1 2 4 5/
+    cout<<endl;
+    //使用STL中find()函数 来查找元素
+     iter1=iset.find(4);
+     if(iter1!=iter2)
+        cout<<"4 found"<<endl;
+     cout<<*iter1;
+    // *iter1=9;//不能有迭代器改变set值
+
+}
