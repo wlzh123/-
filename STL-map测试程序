@@ -1,0 +1,33 @@
+#include<iostream>
+#include<map>
+#include<string>
+
+using namespace std;
+
+int main(){
+    map<string,int>ss;
+    ss[string("ss1")]=1;
+    ss[string("ss2")]=2;
+    ss[string("ss3")]=3;
+    ss[string("ss4")]=4;
+    pair<string,int> value(string("sha"),5);
+    ss.insert(value);
+    int number=ss[string("ss1")];
+    cout<<number<<endl;
+
+    map<string,int>::iterator ite1;
+    ite1=ss.find(string("ss2"));
+    if(ite1==ss.end())
+        cout<<"ss2 not found"<<endl;
+    else
+        cout<<"ss2 found"<<endl;
+
+    ite1->second=9;// 利用迭代器修改 value
+    int number2=ss[string("ss2")];
+    cout<<number2<<endl;  //9
+    for(ite1=ss.begin();ite1!=ss.end();++ite1)
+        cout<<ite1->first<<' '<<ite1->second<<endl;
+
+    return 0;
+
+}
