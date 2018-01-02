@@ -12,7 +12,7 @@ int main(){
     ss[string("ss4")]=4;
     pair<string,int> value(string("sha"),5);
     ss.insert(value);
-    int number=ss[string("ss1")];
+    int number=ss[string("ss1")];//产生临时对象
     cout<<number<<endl;
 
     map<string,int>::iterator ite1;
