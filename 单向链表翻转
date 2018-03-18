@@ -1,0 +1,53 @@
+#include<iostream>
+using namespace std;
+//链表结点
+struct ListNode
+{
+    int data;
+    ListNode *next;
+public:
+    ListNode(int num):data(num),next(NULL){};
+};
+//翻转单向链表
+ListNode *ReverseList( ListNode *head)
+{
+   ListNode *Next=NULL;
+   ListNode *Pre =NULL;
+   while(head!=NULL)
+   {
+      Next= head->next;
+      head->next=Pre;
+      Pre=head;
+      head=Next;
+   }
+   return Pre;////importance
+
+}
+int main()
+{
+    ListNode *phead=new ListNode(0);
+    ListNode *cur=phead;
+    for(int i=1;i<10;i++)
+    {
+        ListNode *tmp=new ListNode(i);
+        cur->next= tmp;
+        cur=cur->next;
+    }
+     cur=phead;
+     //翻转前
+     for(int i=0;i<10;i++)
+    {
+         cout<<cur->data<<" ";
+         cur=cur->next;
+    }
+    cout<<endl;
+    //翻转后
+    phead=ReverseList(phead);
+    for(int i=0;i<10;i++)
+    {
+         cout<<phead->data<<" ";
+         phead=phead->next;
+    }
+
+    return 0;
+}
