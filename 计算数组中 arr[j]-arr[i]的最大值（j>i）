@@ -1,0 +1,17 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int arr[]={12,-100,-10,3,6,4,-1,5,8,6,7,10};
+    int mi=arr[0];//mi记录遍历过的元素中的最小值
+    int res=-999999;//记录最大差值
+    int len = sizeof(arr)/sizeof(int);
+    for(int i=1;i<len;i++)
+    {
+        res=res>(arr[i]-mi)?res:(arr[i]-mi);
+        mi=arr[i]<mi?arr[i]:mi;
+    }
+    cout<<res;
+  return 0;
+}
