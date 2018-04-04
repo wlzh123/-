@@ -1,0 +1,48 @@
+#include<iostream>
+#include<vector>
+#include<deque>
+using namespace std;
+
+void Get_max(int arr[],int len,int res1[],int res2[],int w)
+{
+   deque<int> Q1;
+   deque<int> Q2;
+   int index1=0;
+   int index2=0;
+
+   for(int i=0;i<len;i++)
+   {
+          //求窗口最大值
+       while(!Q1.empty()&&arr[Q1.back()]<=arr[i])
+       {
+            Q1.pop_back();
+       }
+       Q1.push_back(i);
+       if(Q1.front()==i-w)
+           Q1.pop_front();
+       if(i>=w-1)
+            res1[index1++]=arr[Q1.front()];
+          //求窗口最小值
+       while(!Q2.empty()&&arr[Q2.back()]>=arr[i])
+       {
+            Q2.pop_back();
+       }
+       Q2.push_back(i);
+       if(Q2.front()==i-w)
+           Q2.pop_front();
+       if(i>=w-1)
+            res2[index2++]=arr[Q2.front()];
+   }
+}
+int main()
+{
+    int arr[]={1,8,3,4,3,3,3,3,5,6,7};
+    int w=3;
+    int len=sizeof(arr)/sizeof(int);
+    int res1[len-w+1];
+    int res2[len-w+1];
+
+    Get_max(arr,len,res1,res2,3);
+    for(int i=0;i<len-w+1;i++)
+        cout<<"max:"<<res1[i]<<" "<<"min:"<<res2[i]<<" "<<"diff:"<<res1[i]-res2[i]<<endl;
+}
