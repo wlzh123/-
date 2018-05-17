@@ -1,0 +1,40 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+
+    char ch[50]="i i i i";//50是总容量
+    int i =0;
+    int len=0;//记录总长度
+    int cn=0;//计算空格的个数
+    while(ch[i]!='\0'){
+        if(ch[i]==' ')
+            cn++;
+        len++;
+        i++;
+    }
+    //替换前
+    for(int i=0;i<len;i++)
+        cout<<ch[i];
+    cout<<endl;
+
+    int newlen=len+cn*2;
+    int cnt=newlen;
+
+    while(len>=0&&newlen>len)
+    {
+         if(ch[len]==' '){
+            ch[newlen--]='0';
+            ch[newlen--]='2';
+            ch[newlen--]='%';
+         }
+         else{
+            ch[newlen--]=ch[len];
+
+         }
+         --len;
+    }
+    //替换后
+    for(int i=0;i<cnt;i++)
+        cout<<ch[i];
+}
