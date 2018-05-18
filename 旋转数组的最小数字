@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+int Min(int arr[],int length){
+    int first=0;
+    int last=length-1;
+    int res=0;
+////如果中间的数比first大 说明最小值在右边
+////如果中间的数比左边小并且比右边小 说明最小值在左边
+    while(arr[first]>=arr[last]){
+        if((last-first)==1){
+            res=last;
+            break;
+        }
+        int mid=(first+last)/2;
+        if(arr[mid]>=arr[first])
+            first=mid;
+        else if(arr[mid]<=arr[last])
+            last=mid;
+    }
+   return arr[res];
+}
+int main(){
+int arr[]={3,4,5,6,7,0,1,2};
+int res=Min(arr,8);
+cout<<res;
+
+
+}
