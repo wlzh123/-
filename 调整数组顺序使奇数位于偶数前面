@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+void Reorder(int arr[],int len){
+  int *start=arr;
+  int *ends=arr+len-1;
+  while(start<ends){
+    while(start<ends&&(*ends%2==0))
+        ends--;
+    while(start<ends&&(*start%2==1))
+        start++;
+    if(start<ends){
+        int temp=*start;
+        *start=*ends;
+        *ends=temp;
+    }
+  }
+
+
+}
+int main(){
+    int arr[]={1,2,3,4,5,6,7,8,9};
+    Reorder(arr,9);
+    for(int i=0;i<9;i++)
+        cout<<arr[i]<<" ";
+}
