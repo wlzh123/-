@@ -1,0 +1,62 @@
+#include<iostream>
+using namespace std;
+struct ListNode{
+public:
+    int data;
+    ListNode *next;
+};
+void DelateNode(ListNode **pNode,ListNode *toBedeleted){
+    if(!pNode||!toBedeleted) return;
+    //删除中间节点
+    if(toBedeleted->next!=NULL){
+        ListNode *node=toBedeleted->next;
+        toBedeleted->data=node->data;
+        toBedeleted->next=node->next;
+        delete node;
+        node=NULL;
+    }
+    //删除头结点 
+    else if(*pNode==toBedeleted){
+        delete toBedeleted;
+        toBedeleted =NULL;
+        *pNode=NULL;
+
+    }
+    //删除尾节点
+   else{
+    ListNode *head=*pNode;
+    while(head->next!=toBedeleted){
+        head=head->next;
+    }
+    head->next=NULL;
+    delete toBedeleted;
+    toBedeleted=NULL;
+   }
+
+}
+int main(){
+    ListNode *pnode=new ListNode();
+    pnode->data=0;
+    pnode->next=NULL;
+    ListNode *temp=pnode;
+
+    ListNode *cout1=pnode;
+    ListNode *cout2=pnode;
+    for(int i=1;i<5;i++){
+        ListNode *node=new ListNode();
+        node->data=i;
+        node->next=NULL;
+        temp->next=node;
+        temp=temp->next;
+    }
+    while(cout1){
+        cout<<cout1->data;
+        cout1=cout1->next;
+    }
+    cout<<endl;
+    DelateNode(&pnode,pnode);
+        while(pnode!=NULL){
+        cout<<pnode->data;
+        pnode=pnode->next;
+    }
+}
