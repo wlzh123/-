@@ -10,9 +10,10 @@ void PrintArr(int arr[][4],int m){
         cout<<arr[x1][i]<<" ";
     for(int i=x1+1;i<x2;i++)
         cout<<arr[i][y2-1]<<" ";
-    for(int i=y2-2;i>=y1;i--)
+    
+    for(int i=y2-2;i>=y1&&x2>x1;i--)
         cout<<arr[x2-1][i]<<" ";
-    for(int i=x2-2;i>x1;i--)
+    for(int i=x2-2;i>x1&&y2>y1;i--)
         cout<<arr[i][y1]<<" ";
     x1=x1+1;
     y1=y1+1;
